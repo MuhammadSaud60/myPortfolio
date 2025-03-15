@@ -1,9 +1,10 @@
 :root {
-    --primary-color: #64ffda;
+    --primary-color: #ffffff;
     --secondary-color: #000000;
     --light-slate: #a8b2d1;
     --dark-slate: #495670;
     --slate: #8892b0;
+    
   }
   * {
     margin: 0;
@@ -22,6 +23,8 @@
     position: relative;
   }
 
+
+
   /* CTA Buttons */
   .cta-button {
     display: inline-block;
@@ -32,10 +35,19 @@
     font-weight: 600;
     border-radius: 4px;
     transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    border: none;
   }
+  
+  
+  /* Hover State */
   .cta-button:hover {
-    background: #52e0b8;
+    color: var(--primary-color);
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    
   }
+  
+ 
 
   .background-wrapper {
     position: relative;
@@ -106,9 +118,10 @@
   }
   .logo {
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
+    font-family: Helvetica, sans-serif;
   }
   .nav-links {
     display: flex;
@@ -187,17 +200,18 @@
   .about-image:hover{
     filter: grayscale(0);
     transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 30px rgba(100, 255, 218, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 61, 183, 0.3), 0 0 25px rgba(0, 61, 183, 0.5);
   animation: none;
-    background: linear-gradient(45deg, #64ffda, #52e0b8);
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
     transition: background 0.7s ease-in-out;
   }
   
 
   @keyframes glowPulse {
-    0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.5); }
-    50% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(100, 255, 218, 0.7); }
-    100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.5); }
+    
+    0% { box-shadow: 0 4px 10px rgba(0, 61, 183, 0.3), 0 0 25px rgba(0, 61, 183, 0.5); }
+    50% { box-shadow: 0 4px 10px rgba(0, 61, 183, 0.3), 0 0 40px rgba(0, 61, 183, 0.5); }
+    100% { box-shadow: 0 4px 10px rgba(0, 61, 183, 0.3), 0 0 50px rgba(0, 61, 183, 0.5); }
   }
 
   /* Services Section */
@@ -208,7 +222,7 @@
     margin-top: 3rem;
   }
   .service-card {
-    background: #112240;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     padding: 2rem;
     border-radius: 4px;
     text-align: center;
@@ -240,7 +254,7 @@
     margin-top: 3rem;
   }
   .skill-item {
-    background: #112240;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     padding: 2rem;
     border-radius: 4px;
     text-align: center;
@@ -314,22 +328,25 @@
   }
   
   .project-card {
-    background: #112240;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     border-radius: 8px;
     padding: 2rem;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; 
-    height: 460px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-left: 4px solid var(--primary-color); 
+    color: #e6e6e6; 
+    transform-style: preserve-3d;
+  transition: transform 0.1s ease;
   }
   
   .project-card:hover {
-    transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
-    background: rgba(100, 255, 218, 0.1); 
+    background: rgba(100, 255, 218, 0.1);
+    
   }
   
   .project-image {
@@ -409,11 +426,28 @@
     }
   }
 
-  /* Contact Form */
+  .contact-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+
+  
   .contact-form {
     width: 100%;
-    /* max-width: 800px; */
+  
     margin: 0 auto;
+  }
+
+
+  @media (max-width: 768px) {
+    .contact-icon {
+      position: static;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
   }
 
   
@@ -423,7 +457,7 @@
   input, textarea {
     width: 100%;
     padding: 0.8rem;
-    background: #112240;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     border: 1px solid var(--dark-slate);
     border-radius: 4px;
     color: var(--light-slate);
@@ -466,7 +500,7 @@
 
   /* Footer */
   footer {
-    background: #112240;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     padding: 1.5rem 0;
     text-align: center;
     color: var(--light-slate);
@@ -561,6 +595,7 @@
       text-align: center;
       cursor: pointer;
     }
+
     
 
     .services-grid{

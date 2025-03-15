@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
  
+  
 </head>
 <body>
 
@@ -34,7 +35,9 @@
 
   <main>
    
+    
     <section class="hero section" id="hero">
+      
       <div class="container">
         <div class="hero-content">
           <p class="hero-subtitle">Hi, my name is</p>
@@ -44,7 +47,7 @@
             I'm a full-stack developer specializing in building exceptional digital experiences.
             Currently focused on creating responsive web applications with modern technologies.
           </p>
-          <a href="#contact" class="cta-button">Get In Touch</a>
+          <a href="#contact" class="cta-button"><span>Get In Touch</span></a>
         </div>
       </div>
     </section>
@@ -201,7 +204,8 @@
     <section class="section" id="contact">
       <div class="container">
         <h2 class="section-title">Contact Me</h2>
-        <form action="https://formspree.io/f/xqaaroqj" method="POST" class="contact-form" id="contactForm">
+        <div class="contact-wrapper">
+          <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form" id="contactForm">
             <div class="form-group">
               <input type="text" name="name" placeholder="Name" required />
             </div>
@@ -211,8 +215,9 @@
             <div class="form-group">
               <textarea name="message" placeholder="Message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="cta-button">Send Message</button>
+            <button type="submit" class="cta-button"><span>Send Message</span></button>
           </form>
+        </div>
       </div>
     </section>
     <div id="popupMessage"></div>
@@ -249,32 +254,59 @@
   // Background Animations
 
   document.addEventListener("DOMContentLoaded", function() {
+    // Particles.js
     particlesJS('particles-js', {
-  particles: {
-    number: { value: 60, density: { enable: true, value_area: 900 } },
-    color: { value: '#ffffff' },
-    shape: { type: 'star' },
-    opacity: { value: 0.3, random: false },
-    size: { value: 4, random: true },
-    line_linked: { enable: true, distance: 90, color: '#ffffff', opacity: 0.2, width: 1.5 },
-    move: { enable: true, speed: 3, direction: 'bottom', random: false, straight: false, out_mode: 'out' }
-  },
-  interactivity: {
-    detect_on: 'canvas',
-    events: {
-      onhover: { enable: true, mode: 'repulse' },
-      onclick: { enable: true, mode: 'push' },
-      resize: true
-    },
-    modes: {
-      repulse: { distance: 200, duration: 0.4 },
-      push: { particles_nb: 4 }
-    }
-  },
-  retina_detect: true
-});
-});
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 900 } },
+        color: { value: '#ffffff' },
+        shape: { type: 'star' },
+        opacity: { value: 0.3, random: false },
+        size: { value: 4, random: true },
+        line_linked: { enable: true, distance: 90, color: '#ffffff', opacity: 0.2, width: 1.5 },
+        move: { enable: true, speed: 3, direction: 'bottom', random: false, straight: false, out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true
+        },
+        modes: {
+          repulse: { distance: 200, duration: 0.4 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+
+  
+  });
       
+
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    // On mouse move over the card
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect(); 
+      const x = e.clientX - rect.left; 
+      const y = e.clientY - rect.top;  
+      const centerX = rect.width / 2;  
+      const centerY = rect.height / 2; 
+
+      
+      const rotateX = (y - centerY) / centerY * 10; 
+      const rotateY = (centerX - x) / centerX * 10; 
+
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
   </script>
 
 

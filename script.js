@@ -142,3 +142,26 @@ let idleTimer;
       showPopup("Network error. Please check your connection.", "error");
     });
   });
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    // On mouse move over the card
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect(); // Get card's position and size
+      const x = e.clientX - rect.left; // Cursor X relative to card
+      const y = e.clientY - rect.top;  // Cursor Y relative to card
+      const centerX = rect.width / 2;  // Card's horizontal center
+      const centerY = rect.height / 2; // Card's vertical center
+
+      // Calculate rotation angles (adjust multiplier for tilt intensity)
+      const rotateX = (y - centerY) / centerY * 10; // Tilt up/down
+      const rotateY = (centerX - x) / centerX * 10; // Tilt left/right
+
+      // Apply the 3D transform
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Reset transform when cursor leaves the card
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
